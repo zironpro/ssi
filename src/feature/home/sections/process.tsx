@@ -8,7 +8,7 @@ export default function Process() {
       <div className="mx-auto max-w-[1400px] px-6 lg:px-8">
         
         {/* Top Layout */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 mb-24">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 mb-12 sm:mb-16">
           {/* Pill on the left */}
           <div className="shrink-0 w-32">
             <div className="inline-flex items-center rounded-full bg-neutral-100 px-4 py-1.5 text-xs font-semibold text-neutral-600">
@@ -40,36 +40,36 @@ export default function Process() {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pt-16 border-t border-neutral-200">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 sm:gap-12 lg:gap-8 pt-10 sm:pt-16 border-t border-neutral-200">
           
-          <div className="flex flex-col">
-            <div className="text-4xl sm:text-5xl font-medium text-[#1a1a1a] mb-2 tracking-tight">25+</div>
-            <div className="text-sm font-semibold text-neutral-900 mb-4">Years of experience</div>
-            <p className="text-xs text-neutral-500 leading-relaxed max-w-[200px]">
+          <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
+            <div className="text-3xl sm:text-5xl font-medium text-[#1a1a1a] mb-2 tracking-tight">25+</div>
+            <div className="text-sm font-semibold text-neutral-900 mb-2 sm:mb-4">Years of experience</div>
+            <p className="text-xs text-neutral-500 leading-relaxed max-w-[160px] sm:max-w-[200px]">
               Professional expertise and reliable installation.
             </p>
           </div>
           
-          <div className="flex flex-col">
-            <div className="text-4xl sm:text-5xl font-medium text-[#1a1a1a] mb-2 tracking-tight">40%</div>
-            <div className="text-sm font-semibold text-neutral-900 mb-4">Energy savings</div>
-            <p className="text-xs text-neutral-500 leading-relaxed max-w-[200px]">
+          <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
+            <div className="text-3xl sm:text-5xl font-medium text-[#1a1a1a] mb-2 tracking-tight">40%</div>
+            <div className="text-sm font-semibold text-neutral-900 mb-2 sm:mb-4">Energy savings</div>
+            <p className="text-xs text-neutral-500 leading-relaxed max-w-[160px] sm:max-w-[200px]">
               Reduced cooling costs thanks to advanced heat rejection.
             </p>
           </div>
           
-          <div className="flex flex-col">
-            <div className="text-4xl sm:text-5xl font-medium text-[#1a1a1a] mb-2 tracking-tight">99%</div>
-            <div className="text-sm font-semibold text-neutral-900 mb-4">UV Protection</div>
-            <p className="text-xs text-neutral-500 leading-relaxed max-w-[200px]">
+          <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
+            <div className="text-3xl sm:text-5xl font-medium text-[#1a1a1a] mb-2 tracking-tight">99%</div>
+            <div className="text-sm font-semibold text-neutral-900 mb-2 sm:mb-4">UV Protection</div>
+            <p className="text-xs text-neutral-500 leading-relaxed max-w-[160px] sm:max-w-[200px]">
               Maximum defense against fading and sun damage for your interiors.
             </p>
           </div>
           
-          <div className="flex flex-col">
-            <div className="text-4xl sm:text-5xl font-medium text-[#1a1a1a] mb-2 tracking-tight">10 yr</div>
-            <div className="text-sm font-semibold text-neutral-900 mb-4">Comprehensive warranty</div>
-            <p className="text-xs text-neutral-500 leading-relaxed max-w-[200px]">
+          <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
+            <div className="text-3xl sm:text-5xl font-medium text-[#1a1a1a] mb-2 tracking-tight">10 yr</div>
+            <div className="text-sm font-semibold text-neutral-900 mb-2 sm:mb-4">Comprehensive warranty</div>
+            <p className="text-xs text-neutral-500 leading-relaxed max-w-[160px] sm:max-w-[200px]">
               Our premium films withstand extreme weather conditions.
             </p>
           </div>

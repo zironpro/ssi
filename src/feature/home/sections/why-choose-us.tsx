@@ -43,49 +43,48 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="w-full relative overflow-hidden" style={{ background: "var(--surface-primary)" }}>
-      <div className="w-full grid grid-cols-1 lg:grid-cols-4 lg:auto-rows-fr lg:min-h-[700px]">
-        
-        {/* LEFT COLUMN: Box 1 & Box 2 */}
-        <div className="flex flex-col">
-          {/* Box 1 */}
-          <div 
-            className="flex-1 p-10 sm:p-14 lg:p-12 flex flex-col justify-center" 
-            style={{ background: "var(--surface-slate)", color: "var(--text-on-dark)" }}
-          >
-            <div className="mb-6" style={{ color: "var(--color-glass-silver)" }}>{reasons[0].icon}</div>
-            <h3 className="text-sm font-bold uppercase tracking-widest mb-4">{reasons[0].title}</h3>
-            <p className="text-sm leading-relaxed" style={{ color: "var(--text-on-dark-muted)" }}>{reasons[0].description}</p>
+    <section className="w-full relative overflow-hidden py-16 sm:py-24" style={{ background: "var(--surface-primary)" }}>
+      <div className="container-master">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-4 lg:auto-rows-fr gap-4 sm:gap-6 lg:min-h-[700px]">
+          
+          {/* LEFT COLUMN: Box 1 & Box 2 */}
+          <div className="flex flex-col gap-4 sm:gap-6 lg:row-span-2">
+            {/* Box 1 */}
+            <div 
+              className="flex-1 rounded-3xl p-8 sm:p-12 flex flex-col justify-center" 
+              style={{ background: "var(--surface-slate)", color: "var(--text-on-dark)" }}
+            >
+              <div className="mb-4 sm:mb-6" style={{ color: "var(--color-glass-silver)" }}>{reasons[0].icon}</div>
+              <h3 className="text-sm font-bold uppercase tracking-widest mb-3">{reasons[0].title}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-on-dark-muted)" }}>{reasons[0].description}</p>
+            </div>
+            {/* Box 2 */}
+            <div 
+              className="flex-1 rounded-3xl p-8 sm:p-12 flex flex-col justify-center" 
+              style={{ background: "var(--color-arch-white)", color: "var(--color-obsidian)" }}
+            >
+              <div className="mb-4 sm:mb-6 opacity-70" style={{ color: "var(--color-obsidian)" }}>{reasons[1].icon}</div>
+              <h3 className="text-sm font-bold uppercase tracking-widest mb-3">{reasons[1].title}</h3>
+              <p className="text-sm leading-relaxed opacity-70">{reasons[1].description}</p>
+            </div>
           </div>
-          {/* Box 2 */}
-          <div 
-            className="flex-1 p-10 sm:p-14 lg:p-12 flex flex-col justify-center" 
-            style={{ background: "var(--surface-primary)", color: "var(--color-obsidian)" }}
-          >
-            <div className="mb-6 opacity-70" style={{ color: "var(--color-obsidian)" }}>{reasons[1].icon}</div>
-            <h3 className="text-sm font-bold uppercase tracking-widest mb-4">{reasons[1].title}</h3>
-            <p className="text-sm leading-relaxed opacity-70">{reasons[1].description}</p>
+
+          {/* CENTER COLUMN: Image */}
+          <div className="relative rounded-3xl overflow-hidden h-[400px] sm:h-[500px] lg:h-auto lg:row-span-2">
+            <img 
+              src="/images/minimalist-office-interior-desig.webp" 
+              alt="Premium Interior" 
+              className="absolute inset-0 w-full h-full object-cover"
+            />
           </div>
-        </div>
 
-        {/* CENTER COLUMN: Image */}
-        <div className="relative h-[400px] sm:h-[500px] lg:h-auto">
-          <img 
-            src="/images/minimalist-office-interior-desig.webp" 
-            alt="Premium Interior" 
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
-
-        {/* RIGHT COLUMN: Title + 2 Boxes */}
-        <div className="lg:col-span-2 flex flex-col">
-          {/* Top: Title */}
+          {/* RIGHT COLUMN TOP: Title */}
           <div 
-            className="flex-1 p-10 sm:p-14 lg:p-16 flex flex-col items-center lg:items-end justify-center text-center lg:text-right" 
-            style={{ background: "var(--surface-primary)", color: "var(--color-obsidian)" }}
+            className="order-first lg:order-none lg:col-span-2 rounded-3xl p-8 sm:p-12 flex flex-col items-center lg:items-end justify-center text-center lg:text-right" 
+            style={{ color: "var(--color-obsidian)" }}
           >
-            <h2 className="text-6xl sm:text-7xl lg:text-[5.5rem] font-black uppercase leading-[0.9] tracking-tighter mb-6">
-              <span className="block font-light text-4xl sm:text-5xl lg:text-6xl mb-2 tracking-normal">Why</span>
+            <h2 className="text-5xl sm:text-6xl lg:text-[5rem] font-black uppercase leading-[0.9] tracking-tighter mb-5">
+              <span className="block font-light text-3xl sm:text-4xl lg:text-5xl mb-2 tracking-normal">Why</span>
               Choose<br />Us?
             </h2>
             <p className="max-w-md text-sm sm:text-base leading-relaxed opacity-70">
@@ -93,29 +92,29 @@ export default function WhyChooseUs() {
             </p>
           </div>
 
-          {/* Bottom: 2 Boxes */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2">
+          {/* RIGHT COLUMN BOTTOM: 2 Boxes */}
+          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {/* Box 3 */}
             <div 
-              className="p-10 sm:p-14 lg:p-12 flex flex-col justify-center" 
+              className="rounded-3xl p-8 sm:p-12 flex flex-col justify-center" 
               style={{ background: "var(--surface-slate)", color: "var(--text-on-dark)" }}
             >
-              <div className="mb-6" style={{ color: "var(--color-glass-silver)" }}>{reasons[2].icon}</div>
-              <h3 className="text-sm font-bold uppercase tracking-widest mb-4">{reasons[2].title}</h3>
+              <div className="mb-4 sm:mb-6" style={{ color: "var(--color-glass-silver)" }}>{reasons[2].icon}</div>
+              <h3 className="text-sm font-bold uppercase tracking-widest mb-3">{reasons[2].title}</h3>
               <p className="text-sm leading-relaxed" style={{ color: "var(--text-on-dark-muted)" }}>{reasons[2].description}</p>
             </div>
             {/* Box 4 */}
             <div 
-              className="p-10 sm:p-14 lg:p-12 flex flex-col justify-center" 
+              className="rounded-3xl p-8 sm:p-12 flex flex-col justify-center" 
               style={{ background: "var(--surface-dark)", color: "var(--text-on-dark)" }}
             >
-              <div className="mb-6" style={{ color: "var(--color-glass-silver)" }}>{reasons[3].icon}</div>
-              <h3 className="text-sm font-bold uppercase tracking-widest mb-4">{reasons[3].title}</h3>
+              <div className="mb-4 sm:mb-6" style={{ color: "var(--color-glass-silver)" }}>{reasons[3].icon}</div>
+              <h3 className="text-sm font-bold uppercase tracking-widest mb-3">{reasons[3].title}</h3>
               <p className="text-sm leading-relaxed" style={{ color: "var(--text-on-dark-muted)" }}>{reasons[3].description}</p>
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </section>
   );

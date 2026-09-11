@@ -8,6 +8,7 @@ const stats = [
   { value: "30%", label: "Reduced Cooling Energy Costs" },
   { value: "99%", label: "UV Protection" },
   { value: "1,000+", label: "Satisfied Clients" },
+  { value: "100%", label: "Certified Installers" },
 ];
 
 const carouselImagesA = [
@@ -46,7 +47,7 @@ export default function Hero() {
           ════════════════════════════════════════════════ */}
       <div
         className="container-master relative z-10"
-        style={{ paddingTop: "clamp(5rem, 10vw, 9rem)", paddingBottom: 0 }}
+        style={{ paddingTop: "clamp(8rem, 14vw, 11rem)", paddingBottom: 0 }}
       >
         {/*
           Grid behaviour:
@@ -97,8 +98,8 @@ export default function Hero() {
             </p>
 
             {/* Mission card */}
-            <div
-              className="w-full rounded-2xl p-4 md:p-5 mb-8 md:mb-10"
+            {/* <div
+              className="w-full rounded-xl p-4 md:p-5 mb-8 md:mb-10"
               style={{
                 background: "var(--surface-dark)",
                 border: "1px solid rgba(176,138,87,0.15)",
@@ -120,7 +121,7 @@ export default function Hero() {
                 To provide energy-efficient window film solutions that improve
                 comfort, safety, and sustainability.
               </p>
-            </div>
+            </div> */}
 
             {/* CTAs */}
             <div className="flex flex-wrap items-center gap-3 md:gap-4">
@@ -167,6 +168,33 @@ export default function Hero() {
                 </span>
               </Link>
             </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-8 mt-8 sm:mt-10 w-full max-w-2xl border-t pt-6 sm:pt-8" style={{ borderColor: "var(--border-light, rgba(0,0,0,0.08))" }}>
+              {stats.map((s) => (
+                <div key={s.label} className="flex flex-col items-center sm:items-start text-center sm:text-left gap-1.5">
+                  <span
+                    className="font-black leading-none"
+                    style={{
+                      fontSize: "clamp(1.75rem, 2.5vw, 2.5rem)",
+                      color: "var(--text-primary)",
+                    }}
+                  >
+                    {s.value}
+                  </span>
+                  <span
+                    className="font-bold uppercase tracking-wider leading-tight"
+                    style={{
+                      fontSize: "clamp(0.65rem, 0.7vw, 0.75rem)",
+                      color: "var(--text-secondary)",
+                    }}
+                  >
+                    {s.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
           </div>
 
           {/* ── RIGHT: Infinite scroll carousel ──
@@ -228,64 +256,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ════════════════════════════════════════════════
-          STATS STRIP
-          — full bleed dark bar flush below hero content
-          ════════════════════════════════════════════════ */}
-      <div
-        className="relative z-10 w-full mt-8 md:mt-10"
-        style={{
-          background: "var(--surface-dark)",
-          borderTop: "1px solid rgba(176,138,87,0.15)",
-        }}
-      >
-        <div className="container-master">
-          {/*
-            Stats grid:
-              mobile  : 2 col (last item spans full width)
-              sm      : 3 col
-              md      : 5 col (all on one row)
-              lg+     : 5 col
-          */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
-            {stats.map((s, i) => (
-              <div
-                key={s.label}
-                className={`flex flex-col items-center justify-center text-center px-3 ${
-                  /* last item on 2-col mobile: span full row */
-                  i === 4 ? "col-span-2 sm:col-span-1" : ""
-                  }`}
-                style={{
-                  paddingBlock: "clamp(1.25rem, 2.5vw, 2rem)",
-                  borderRight:
-                    i < stats.length - 1
-                      ? "1px solid rgba(245,245,242,0.07)"
-                      : "none",
-                }}
-              >
-                <span
-                  className="font-black leading-none mb-1.5"
-                  style={{
-                    fontSize: "clamp(1.5rem, 2.2vw, 2.25rem)",
-                    color: "var(--accent)",
-                  }}
-                >
-                  {s.value}
-                </span>
-                <span
-                  className="font-medium uppercase tracking-wider leading-tight"
-                  style={{
-                    fontSize: "clamp(0.6rem, 0.65vw, 0.7rem)",
-                    color: "var(--color-glass-silver)",
-                  }}
-                >
-                  {s.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+
     </section>
   );
 }
