@@ -1,4 +1,5 @@
 import Hero from "./sections/hero";
+import PartnerHighlight from "./sections/partner-highlight";
 import Features from "./sections/features";
 import ProductsGallery from "./sections/products";
 import Process from "./sections/process";
@@ -11,6 +12,7 @@ export default function HomeView() {
     <div>
       <main className="bg-white">
         <Hero />
+        <PartnerHighlight />
         <WhyChooseUs />
         <Process />
         <Features />
@@ -21,3 +23,4 @@ export default function HomeView() {
     </div>
   );
 }
+

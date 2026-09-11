@@ -26,8 +26,39 @@
      Override per project when needed.
      --------------------------------------------------------------------------- */
 
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ---------------------------------------------------------------------------
+     BRAND COLOUR PALETTE
+     Source: Solar Safety Films — Brand Guidelines
+     Balance: 55% Arch-White · 25% Obsidian · 10% Glass-Silver-Dark · 5% Solar-Bronze · 5% Glass-Silver
+     --------------------------------------------------------------------------- */
+
+  /* Raw palette */
+  --color-obsidian:       #111111;   /* RGB 17 17 17   — deep black   */
+  --color-arch-white:     #F5F5F2;   /* RGB 245 245 242 — warm off-white */
+  --color-solar-bronze:   #B08A57;   /* RGB 176 138 87  — warm gold   */
+  --color-glass-silver:   #B8BEC1;   /* RGB 184 190 193 — light silver */
+  --color-glass-dark:     #293238;   /* RGB 41  50  56  — slate dark  */
+
+  /* Semantic aliases — use these in components */
+  --background:           var(--color-arch-white);
+  --foreground:           var(--color-obsidian);
+
+  --surface-primary:      var(--color-arch-white);   /* large light areas  */
+  --surface-dark:         var(--color-obsidian);     /* dark sections      */
+  --surface-slate:        var(--color-glass-dark);   /* mid-dark sections  */
+
+  --accent:               var(--color-solar-bronze); /* CTA / highlights   */
+  --accent-subtle:        #c9a06e;                   /* lighter bronze     */
+  --accent-muted:         #8a6a3f;                   /* darker bronze      */
+
+  --border-light:         rgba(17,17,17,0.08);
+  --border-dark:          rgba(245,245,242,0.10);
+
+  --text-primary:         var(--color-obsidian);
+  --text-secondary:       #4a4a47;
+  --text-muted:           var(--color-glass-silver);
+  --text-on-dark:         var(--color-arch-white);
+  --text-on-dark-muted:   rgba(245,245,242,0.65);
 
 
   /* ---------------------------------------------------------------------------

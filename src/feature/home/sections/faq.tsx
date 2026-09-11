@@ -33,52 +33,80 @@ export default function Faq() {
   };
 
   return (
-    <section className="bg-[#fafafa] py-24 sm:py-32 w-full">
+    <section
+      className="py-24 sm:py-32 w-full"
+      style={{ background: "var(--surface-primary)" }}
+    >
       <div className="mx-auto max-w-[1000px] px-6 lg:px-8">
-        
+
         <div className="text-center mb-16">
-          <div className="inline-flex items-center rounded-full bg-neutral-200/50 px-4 py-1.5 text-xs font-semibold text-neutral-600 mb-6">
+          <div
+            className="inline-flex items-center rounded-full px-4 py-1.5 text-xs font-semibold mb-6"
+            style={{
+              background: "rgba(176,138,87,0.10)",
+              color: "var(--accent-muted)",
+              border: "1px solid rgba(176,138,87,0.20)",
+            }}
+          >
             Common Questions
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-black font-sans">
+          <h2
+            className="text-4xl sm:text-5xl font-bold tracking-tight font-sans"
+            style={{ color: "var(--text-primary)" }}
+          >
             Frequently Asked Questions
           </h2>
         </div>
 
-        <div className="flex flex-col border-t border-neutral-200">
+        <div
+          className="flex flex-col"
+          style={{ borderTop: "1px solid var(--border-light)" }}
+        >
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <div key={index} className="border-b border-neutral-200">
+              <div
+                key={index}
+                style={{ borderBottom: "1px solid var(--border-light)" }}
+              >
                 <button
                   onClick={() => toggleFaq(index)}
                   className="w-full flex items-center justify-between py-6 text-left group"
                 >
-                  <span className={`text-lg sm:text-xl font-medium transition-colors ${isOpen ? 'text-black' : 'text-neutral-600 group-hover:text-neutral-900'}`}>
+                  <span
+                    className="text-lg sm:text-lg font-medium transition-colors"
+                    style={{ color: isOpen ? "var(--text-primary)" : "var(--text-secondary)" }}
+                  >
                     {faq.question}
                   </span>
-                  
-                  <div className={`ml-4 shrink-0 flex items-center justify-center size-8 rounded-full border transition-all duration-300 ${isOpen ? 'bg-black border-black text-white rotate-180' : 'bg-transparent border-neutral-300 text-neutral-400 group-hover:border-neutral-500'}`}>
-                    <svg 
-                      className="size-4" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor" 
+
+                  <div
+                    className="ml-4 shrink-0 flex items-center justify-center size-8 rounded-full border transition-all duration-300"
+                    style={
+                      isOpen
+                        ? { background: "var(--accent)", borderColor: "var(--accent)", color: "var(--color-arch-white)", transform: "rotate(180deg)" }
+                        : { background: "transparent", borderColor: "var(--color-glass-silver)", color: "var(--color-glass-silver)" }
+                    }
+                  >
+                    <svg
+                      className="size-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                       strokeWidth={2}
                     >
-                      <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        d={isOpen ? "M19 9l-7 7-7-7" : "M19 9l-7 7-7-7"} 
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
                 </button>
-                
-                <div 
-                  className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100 mb-8' : 'max-h-0 opacity-0 mb-0'}`}
+
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-[500px] opacity-100 mb-8" : "max-h-0 opacity-0 mb-0"}`}
                 >
-                  <p className="text-base text-neutral-500 leading-relaxed pr-12">
+                  <p
+                    className="text-base leading-relaxed pr-12"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
                     {faq.answer}
                   </p>
                 </div>

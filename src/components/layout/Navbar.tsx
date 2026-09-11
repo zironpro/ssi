@@ -90,18 +90,18 @@ export default function Navbar() {
   // one continuous surface expanding to fit its own content.
   const maxWidth = productsOpen ? "72rem" : "60rem";
 
-  // Dynamic Theme Classes
-  const capsuleClasses = isLightMode 
-    ? "border-black/10 bg-white/95 text-black" 
-    : "border-white/10 bg-black/90 text-white";
-    
+  // Dynamic Theme Classes — drawn from brand palette CSS variables
+  const capsuleClasses = isLightMode
+    ? "border-[var(--border-light)] bg-[var(--color-arch-white)]/95 text-[var(--color-obsidian)]"
+    : "border-[var(--border-dark)] bg-[var(--color-obsidian)]/90 text-[var(--color-arch-white)]";
+
   const linkClasses = isLightMode
-    ? "text-black/80 hover:bg-black/5 hover:text-black"
-    : "text-white/90 hover:bg-white/10 hover:text-white";
+    ? "text-[var(--text-secondary)] hover:bg-[var(--border-light)] hover:text-[var(--text-primary)]"
+    : "text-[var(--text-on-dark-muted)] hover:bg-[var(--border-dark)] hover:text-[var(--text-on-dark)]";
 
   const btnClasses = isLightMode
-    ? "bg-black text-white hover:bg-neutral-800"
-    : "bg-white text-neutral-900 hover:bg-neutral-200";
+    ? "bg-[var(--accent)] text-[var(--color-arch-white)] hover:bg-[var(--accent-muted)]"
+    : "bg-[var(--accent)] text-[var(--color-arch-white)] hover:bg-[var(--accent-subtle)]";
 
   const logoClasses = isLightMode ? "brightness-0" : "brightness-0 invert";
 
