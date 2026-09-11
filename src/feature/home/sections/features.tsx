@@ -32,7 +32,7 @@ const features = [
   {
     id: "residential",
     title: "Residential Projects",
-    image: "/images/heroimg.png",
+    image: "/images/minimalist-office-interior-desig.webp",
   },
 ];
 

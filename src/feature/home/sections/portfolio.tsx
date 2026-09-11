@@ -8,7 +8,7 @@ const portfolioItems = [
     id: 1,
     title: "Skyline Penthouse",
     category: "Residential • UV Protection",
-    image: "/images/heroimg.png",
+    image: "/images/minimalist-office-interior-desig.webp",
     span: "col-span-1 md:col-span-2 row-span-2",
   },
   {
