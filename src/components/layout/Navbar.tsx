@@ -197,12 +197,19 @@ export default function Navbar() {
 
           {/* Center: Logo */}
           <div className="flex shrink-0 items-center justify-center px-4">
-            <Link href="/" className="flex items-center justify-center">
+            <Link href="/" className="flex items-center justify-center gap-4">
               <img
                 src="/images/ssi"
                 alt="SSI Logo"
                 style={{ height: "3rem", width: "auto" }}
                 className={`object-contain transition-all duration-300 ${logoClasses}`}
+              />
+              <span className={`text-xl font-thin ${isLightMode ? 'text-black/20' : 'text-white/20'}`}>|</span>
+              <img
+                src="/images/solargard.png"
+                alt="Solar Gard Logo"
+                style={{ height: "4.5rem", width: "auto" }}
+                className={`object-contain transition-all duration-300`}
               />
             </Link>
           </div>

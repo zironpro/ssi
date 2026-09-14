@@ -84,12 +84,19 @@ export default function Footer() {
           {/* ── Brand Column ── */}
           <div className="flex flex-col gap-6">
             {/* Logo */}
-            <Link href="/" className="inline-block w-fit">
+            <Link href="/" className="inline-flex items-center gap-4 w-fit">
               <img
                 src="/images/ssi"
                 alt="Solar Safety Films logo"
                 className="object-contain brightness-0 invert"
-                style={{ height: "60px", width: "auto", maxWidth: "140px" }}
+                style={{ height: "60px", width: "auto" }}
+              />
+              <span className="text-xl font-thin text-white/20">|</span>
+              <img
+                src="/images/solargard.png"
+                alt="Solar Gard Logo"
+                className="object-contain"
+                style={{ height: "90px", width: "auto" }}
               />
             </Link>
 
