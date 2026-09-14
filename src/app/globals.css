@@ -33,32 +33,33 @@
      --------------------------------------------------------------------------- */
 
   /* Raw palette */
-  --color-obsidian:       #111111;   /* RGB 17 17 17   — deep black   */
-  --color-arch-white:     #F5F5F2;   /* RGB 245 245 242 — warm off-white */
-  --color-solar-bronze:   #B08A57;   /* RGB 176 138 87  — warm gold   */
-  --color-glass-silver:   #B8BEC1;   /* RGB 184 190 193 — light silver */
-  --color-glass-dark:     #293238;   /* RGB 41  50  56  — slate dark  */
+  --color-deep-forest:    #1A1A1A; /* SolarGard Charcoal */
+  --color-warm-ivory:     #FFFFFF; /* SolarGard Pure White */
+  --color-arch-sand:      #E5E7EB; /* SolarGard Light Gray */
+  --color-muted-sage:     #007BC0; /* SolarGard Blue */
+  --color-soft-glass:     #F3F4F6; /* Soft Gray */
+  --color-muted-copper:   #F5B21E; /* SolarGard Yellow */
 
   /* Semantic aliases — use these in components */
-  --background:           var(--color-arch-white);
-  --foreground:           var(--color-obsidian);
+  --background:           var(--color-warm-ivory);
+  --foreground:           var(--color-deep-forest);
 
-  --surface-primary:      var(--color-arch-white);   /* large light areas  */
-  --surface-dark:         var(--color-obsidian);     /* dark sections      */
-  --surface-slate:        var(--color-glass-dark);   /* mid-dark sections  */
+  --surface-primary:      var(--color-warm-ivory);
+  --surface-dark:         var(--color-deep-forest);
+  --surface-slate:        var(--color-muted-sage);
 
-  --accent:               var(--color-solar-bronze); /* CTA / highlights   */
-  --accent-subtle:        #c9a06e;                   /* lighter bronze     */
-  --accent-muted:         #8a6a3f;                   /* darker bronze      */
+  --accent:               var(--color-muted-copper);
+  --accent-subtle:        #c98963;
+  --accent-muted:         #8c5432;
 
-  --border-light:         rgba(17,17,17,0.08);
-  --border-dark:          rgba(245,245,242,0.10);
+  --border-light:         rgba(23, 33, 31, 0.08);
+  --border-dark:          rgba(244, 241, 232, 0.10);
 
-  --text-primary:         var(--color-obsidian);
-  --text-secondary:       #4a4a47;
-  --text-muted:           var(--color-glass-silver);
-  --text-on-dark:         var(--color-arch-white);
-  --text-on-dark-muted:   rgba(245,245,242,0.65);
+  --text-primary:         var(--color-deep-forest);
+  --text-secondary:       var(--color-muted-sage);
+  --text-muted:           var(--color-arch-sand);
+  --text-on-dark:         var(--color-warm-ivory);
+  --text-on-dark-muted:   rgba(244, 241, 232, 0.65);
 
 
   /* ---------------------------------------------------------------------------

@@ -1,261 +1,178 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-const stats = [
-  { value: "15+", label: "Years Industry Experience" },
-  { value: "82%", label: "Solar Heat Rejection" },
-  { value: "30%", label: "Reduced Cooling Energy Costs" },
-  { value: "99%", label: "UV Protection" },
-  { value: "1,000+", label: "Satisfied Clients" },
-  { value: "100%", label: "Certified Installers" },
-];
-
-const carouselImagesA = [
-  { src: "/images/low-angle-view-business-buildings-1-scaled.webp", alt: "Business Buildings" },
-  { src: "/images/modern-skyscrapers-business-district-scaled.webp", alt: "Skyscrapers" },
-  { src: "/images/modern-office-overlooking-city-skyline-sunset-scaled.webp", alt: "Office View" },
-  { src: "/images/minimalist-office-interior-desig.webp", alt: "Minimalist Office" },
-];
-
-const carouselImagesB = [
-  { src: "/images/minimalist-office-interior-desig.webp", alt: "Minimalist Office" },
-  { src: "/images/modern-office-overlooking-city-skyline-sunset-scaled.webp", alt: "Office View" },
-  { src: "/images/low-angle-view-business-buildings-1-scaled.webp", alt: "Business Buildings" },
-  { src: "/images/modern-skyscrapers-business-district-scaled.webp", alt: "Skyscrapers" },
-];
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const maskRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!heroRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline();
+
+      // 1. Initial Load Animation
+      tl.fromTo(
+        maskRef.current,
+        { clipPath: "inset(20% 10% 20% 10% round 32px)" },
+        { clipPath: "inset(0% 0% 0% 0% round 0px)", duration: 1.8, ease: "power3.inOut" },
+        0
+      )
+      .fromTo(
+        imageRef.current,
+        { scale: 1.08 },
+        { scale: 1, duration: 2, ease: "power3.out" },
+        0
+      )
+      .fromTo(
+        ".hero-headline-line",
+        { y: 100, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.2, stagger: 0.15, ease: "power4.out" },
+        1
+      )
+      .fromTo(
+        ".hero-sub",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
+        1.4
+      )
+      .fromTo(
+        ".hero-cta",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: "power3.out" },
+        1.6
+      )
+      .fromTo(
+        ".hero-reflection",
+        { x: "-100%", skewX: -25 },
+        { x: "200%", skewX: -25, duration: 2.5, ease: "power2.inOut" },
+        1.2
+      );
+
+      // 2. Scroll Transformation
+      gsap.to(imageRef.current, {
+        scale: 1.1,
+        y: 100,
+        ease: "none",
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      gsap.to(".hero-text-content", {
+        y: -150,
+        opacity: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      // 3. Mouse Interaction (Subtle light reflection)
+      const handleMouseMove = (e: MouseEvent) => {
+        if (window.innerWidth < 1024) return;
+        const xPos = (e.clientX / window.innerWidth - 0.5) * 20; // -10 to 10
+        const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
+
+        gsap.to(".hero-light", {
+          x: xPos,
+          y: yPos,
+          duration: 1,
+          ease: "power2.out",
+        });
+      };
+
+      window.addEventListener("mousemove", handleMouseMove);
+
+      return () => {
+        window.removeEventListener("mousemove", handleMouseMove);
+      };
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
-      className="relative w-full overflow-hidden"
-      style={{ background: "var(--surface-primary)" }}
+      ref={heroRef}
+      className="relative w-full h-[100vh] min-h-[700px] overflow-hidden bg-[var(--color-deep-forest)]"
     >
-      {/* Subtle dot texture */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: "radial-gradient(circle, rgba(176,138,87,0.055) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }}
-      />
+      {/* ── IMAGE BACKGROUND & MASK ── */}
+      <div ref={maskRef} className="absolute inset-0 overflow-hidden z-0">
+        <img
+          ref={imageRef}
+          src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop"
+          alt="Premium Architectural Glass"
+          className="w-full h-full object-cover origin-center"
+        />
+        
+        {/* Subtle gradients for readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-deep-forest)]/80 via-[var(--color-deep-forest)]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-deep-forest)]/60 via-transparent to-transparent" />
 
-      {/* ════════════════════════════════════════════════
-          MAIN CONTENT
-          — uses container-master from globals.css
-          — padding-top accounts for fixed navbar (~72px)
-          ════════════════════════════════════════════════ */}
-      <div
-        className="container-master relative z-10"
-        style={{ paddingTop: "clamp(8rem, 14vw, 11rem)", paddingBottom: 0 }}
-      >
-        {/*
-          Grid behaviour:
-            mobile (< 768px)  : 1 col, carousel hidden
-            md (768–1023px)   : 1 col, carousel shown below text as shorter strip
-            lg (1024–1279px)  : 2 col, text left · carousel right
-            xl (1280px+)      : 2 col with more breathing room
-            2xl (1536px+)     : inherits, container caps at 1440 px
-        */}
-        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-[1fr_1fr] xl:grid-cols-[1.1fr_0.9fr] gap-0 lg:gap-10 xl:gap-16 items-start">
+        {/* Animated Light Sweep (CSS) */}
+        <div 
+          className="hero-reflection absolute inset-0 w-[50%] bg-gradient-to-r from-transparent via-white/10 to-transparent mix-blend-overlay pointer-events-none"
+        />
 
-          {/* ── LEFT: Text content ── */}
-          <div className="flex flex-col items-start pb-10 lg:pb-16">
+        {/* Mouse interactive subtle glow */}
+        <div 
+          className="hero-light absolute inset-0 bg-gradient-to-br from-white/0 via-white/5 to-white/0 mix-blend-overlay pointer-events-none"
+        />
+      </div>
 
+      {/* ── TEXT CONTENT ── */}
+      <div className="container-master relative z-10 w-full h-full flex flex-col justify-center items-center text-center hero-text-content mt-8 md:mt-0 pt-20">
+        
+        <h1 className="text-[52px] md:text-[80px] lg:text-[100px] font-extrabold tracking-tighter text-[var(--color-warm-ivory)] leading-[0.95] mb-8 flex flex-col items-center">
+          <div className="overflow-hidden pb-2"><div className="hero-headline-line">GLASS.</div></div>
+          <div className="overflow-hidden pb-2"><div className="hero-headline-line">ENGINEERED</div></div>
+          <div className="overflow-hidden pb-2 text-[var(--color-arch-sand)]"><div className="hero-headline-line">DIFFERENTLY.</div></div>
+        </h1>
 
+        <p className="hero-sub text-[18px] md:text-[22px] text-[var(--color-warm-ivory)]/80 leading-[1.6] max-w-[500px] mb-12">
+          Advanced window film engineered for comfort, protection and performance.
+        </p>
 
-            {/* H1 — fluid from 1.9rem (mobile) → 4rem (large desktop) */}
-            <h1
-              className="font-bold tracking-tight leading-[1.08] mb-5 md:mb-6 font-sans"
-              style={{
-                fontSize: "clamp(1.9rem, 3.8vw, 4rem)",
-                color: "var(--text-primary)",
-              }}
-            >
-              Advanced Safety &amp; Security{" "}
-              <span style={{ color: "var(--accent)" }}>Window Film</span>{" "}
-              in UAE You Can Trust
-            </h1>
-
-            {/* Description */}
-            <p
-              className="leading-relaxed mb-7 md:mb-8"
-              style={{
-                fontSize: "clamp(0.9rem, 1.1vw, 1.05rem)",
-                color: "var(--text-secondary)",
-                maxWidth: "56ch",
-              }}
-            >
-              Expertly delivered by{" "}
-              <strong style={{ color: "var(--text-primary)", fontWeight: 600 }}>
-                Solar Safety Film Trading L.L.C
-              </strong>
-              , the official distributor and certified applicator of SolarGard
-              Saint-Gobain products in the UAE. We provide advanced window film
-              solutions designed to improve building energy efficiency, enhance
-              safety, and ensure maximum comfort—without compromising natural
-              daylight or aesthetics.
-            </p>
-
-            {/* Mission card */}
-            {/* <div
-              className="w-full rounded-xl p-4 md:p-5 mb-8 md:mb-10"
-              style={{
-                background: "var(--surface-dark)",
-                border: "1px solid rgba(176,138,87,0.15)",
-              }}
-            >
-              <p
-                className="font-semibold uppercase tracking-widest mb-1.5"
-                style={{ fontSize: "0.68rem", color: "var(--accent)" }}
-              >
-                Our Mission
-              </p>
-              <p
-                style={{
-                  fontSize: "clamp(0.82rem, 0.95vw, 0.95rem)",
-                  color: "var(--text-on-dark-muted)",
-                  lineHeight: 1.6,
-                }}
-              >
-                To provide energy-efficient window film solutions that improve
-                comfort, safety, and sustainability.
-              </p>
-            </div> */}
-
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-3 md:gap-4">
-              <Link
-                href="https://ssiuae.ae/about-us/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 rounded-full pl-5 md:pl-6 pr-2 py-2 font-semibold transition-transform hover:scale-105"
-                style={{
-                  fontSize: "clamp(0.8rem, 0.9vw, 0.875rem)",
-                  background: "var(--surface-dark)",
-                  color: "var(--text-on-dark)",
-                }}
-              >
-                <span>Discover More</span>
-                <span
-                  className="flex size-7 md:size-8 items-center justify-center rounded-full transition-transform group-hover:rotate-45"
-                  style={{ background: "var(--color-arch-white)", color: "var(--color-obsidian)" }}
-                >
-                  <svg className="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                  </svg>
-                </span>
-              </Link>
-
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-3 rounded-full pl-5 md:pl-6 pr-2 py-2 font-semibold transition-transform hover:scale-105"
-                style={{
-                  fontSize: "clamp(0.8rem, 0.9vw, 0.875rem)",
-                  background: "rgba(176,138,87,0.10)",
-                  color: "var(--color-obsidian)",
-                  border: "1px solid rgba(176,138,87,0.30)",
-                }}
-              >
-                <span>Contact Us</span>
-                <span
-                  className="flex size-7 md:size-8 items-center justify-center rounded-full shadow-sm transition-transform group-hover:rotate-45"
-                  style={{ background: "var(--color-arch-white)", color: "var(--color-obsidian)" }}
-                >
-                  <svg className="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                  </svg>
-                </span>
-              </Link>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-8 mt-8 sm:mt-10 w-full max-w-2xl border-t pt-6 sm:pt-8" style={{ borderColor: "var(--border-light, rgba(0,0,0,0.08))" }}>
-              {stats.map((s) => (
-                <div key={s.label} className="flex flex-col items-center sm:items-start text-center sm:text-left gap-1.5">
-                  <span
-                    className="font-black leading-none"
-                    style={{
-                      fontSize: "clamp(1.75rem, 2.5vw, 2.5rem)",
-                      color: "var(--text-primary)",
-                    }}
-                  >
-                    {s.value}
-                  </span>
-                  <span
-                    className="font-bold uppercase tracking-wider leading-tight"
-                    style={{
-                      fontSize: "clamp(0.65rem, 0.7vw, 0.75rem)",
-                      color: "var(--text-secondary)",
-                    }}
-                  >
-                    {s.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-          </div>
-
-          {/* ── RIGHT: Infinite scroll carousel ──
-              hidden on pure mobile (<768px), shown md+ as shorter height
-              grows taller on lg+ screens
-          ── */}
-          <div
-            className="hidden md:grid grid-cols-2 gap-3 lg:gap-4 w-full overflow-hidden rounded-[1.5rem] lg:rounded-[2rem]"
-            style={{
-              height: "clamp(340px, 50vw, 720px)",
-              maskImage: "linear-gradient(to bottom, transparent, black 8%, black 92%, transparent)",
-              WebkitMaskImage: "linear-gradient(to bottom, transparent, black 8%, black 92%, transparent)",
-            }}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <Link
+            href="/solutions"
+            className="hero-cta group flex items-center justify-center gap-3 px-8 h-[54px] md:h-[60px] bg-[var(--color-warm-ivory)] text-[var(--color-deep-forest)] font-extrabold tracking-[0.15em] text-[13px] md:text-[14px] uppercase rounded-[30px] transition-transform hover:scale-105"
           >
-            {/* Column A — Scroll Up */}
-            <div className="flex flex-col gap-3 lg:gap-4 animate-scroll-up">
-              {[...Array(2)].map((_, i) => (
-                <div key={i} className="flex flex-col gap-3 lg:gap-4">
-                  {carouselImagesA.map((img) => (
-                    <img
-                      key={img.alt}
-                      src={img.src}
-                      alt={img.alt}
-                      className="w-full aspect-square object-cover rounded-xl lg:rounded-2xl"
-                    />
-                  ))}
-                </div>
-              ))}
-            </div>
-
-            {/* Column B — Scroll Down */}
-            <div
-              className="flex flex-col gap-3 lg:gap-4 animate-scroll-down"
-              style={{ marginTop: "-150%" }}
-            >
-              {[...Array(2)].map((_, i) => (
-                <div key={i} className="flex flex-col gap-3 lg:gap-4">
-                  {carouselImagesB.map((img) => (
-                    <img
-                      key={img.alt}
-                      src={img.src}
-                      alt={img.alt}
-                      className="w-full aspect-square object-cover rounded-xl lg:rounded-2xl"
-                    />
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Mobile-only: single feature image instead of carousel */}
-          <div className="md:hidden w-full rounded-2xl overflow-hidden" style={{ height: "220px" }}>
-            <img
-              src="/images/modern-skyscrapers-business-district-scaled.webp"
-              alt="Window film on skyscrapers"
-              className="w-full h-full object-cover"
-            />
-          </div>
+            Explore Solutions
+            <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
+          </Link>
+          
+          <Link
+            href="/quote"
+            className="hero-cta text-[var(--color-warm-ivory)] font-bold tracking-[0.15em] text-[13px] md:text-[14px] uppercase hover:text-[var(--color-arch-sand)] transition-colors underline underline-offset-8"
+          >
+            Get a Quote
+          </Link>
         </div>
       </div>
 
+      {/* Subtle Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-10 opacity-50">
+        <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--color-warm-ivory)] font-bold">Scroll</span>
+        <div className="w-[1px] h-[30px] bg-gradient-to-b from-[var(--color-warm-ivory)] to-transparent" />
+      </div>
 
     </section>
   );
