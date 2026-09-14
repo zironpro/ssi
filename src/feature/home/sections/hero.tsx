@@ -22,12 +22,7 @@ export default function Hero() {
       const tl = gsap.timeline();
 
       // 1. Initial Load Animation
-      tl.fromTo(
-        maskRef.current,
-        { clipPath: "inset(20% 10% 20% 10% round 32px)" },
-        { clipPath: "inset(0% 0% 0% 0% round 0px)", duration: 1.8, ease: "power3.inOut" },
-        0
-      )
+      tl
       .fromTo(
         imageRef.current,
         { scale: 1.08 },
