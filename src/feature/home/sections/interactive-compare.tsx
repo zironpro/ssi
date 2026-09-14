@@ -60,7 +60,8 @@ export default function InteractiveCompare() {
             <img 
               src="/images/without-tint.png" 
               alt="Without Film"
-              className="w-full h-full object-cover"
+              className="absolute inset-0 w-full"
+              style={{ height: '100%', objectFit: 'cover', display: 'block' }}
             />
             
             <div className="absolute top-8 right-8 bg-[var(--color-warm-ivory)]/90 backdrop-blur-md px-6 py-3 rounded-full text-[12px] font-bold tracking-widest uppercase text-[var(--color-deep-forest)] shadow-lg">
@@ -77,7 +78,8 @@ export default function InteractiveCompare() {
             <img 
               src="/images/with-tint.png" 
               alt="With Film"
-              className="w-full h-full object-cover"
+              className="absolute inset-0 w-full"
+              style={{ height: '100%', objectFit: 'cover', display: 'block' }}
             />
 
             <div className="absolute top-8 left-8 bg-[var(--color-deep-forest)]/90 backdrop-blur-md px-6 py-3 rounded-full text-[12px] font-bold tracking-widest uppercase text-[var(--color-warm-ivory)] shadow-lg">

@@ -89,26 +89,26 @@ export default function PerformanceNumbers() {
         </div>
 
         {/* 4-Column Glass Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {stats.map((stat, i) => (
             <div 
               key={stat.label}
-              className="stat-card group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[24px] p-8 md:p-10 flex flex-col items-center text-center overflow-hidden transition-all duration-500 hover:border-white/30 hover:-translate-y-2 hover:bg-white/10 hover:shadow-2xl"
+              className="stat-card group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[24px] p-4 md:p-10 flex flex-col items-center text-center overflow-hidden transition-all duration-500 hover:border-white/30 hover:-translate-y-2 hover:bg-white/10 hover:shadow-2xl"
             >
               
               {/* Shine effect on hover */}
               <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:animate-[shimmer_1.5s_infinite] skew-x-12 pointer-events-none" />
 
-              <div className="flex items-baseline text-[50px] md:text-[70px] font-black tracking-tighter text-[var(--color-warm-ivory)] leading-none mb-4 drop-shadow-lg">
+              <div className="flex items-baseline text-[40px] md:text-[70px] font-black tracking-tighter text-[var(--color-warm-ivory)] leading-none mb-3 md:mb-4 drop-shadow-lg">
                 <span ref={(el) => { countersRef.current[i] = el; }}>0</span>
                 <span className="text-[var(--color-arch-sand)] ml-1">{stat.suffix}</span>
               </div>
               
-              <div className="text-[14px] md:text-[16px] font-bold tracking-[0.1em] uppercase text-[var(--color-warm-ivory)] mb-2">
+              <div className="text-[11px] md:text-[16px] font-bold tracking-[0.1em] uppercase text-[var(--color-warm-ivory)] mb-2">
                 {stat.label}
               </div>
               
-              <div className="text-[14px] text-[var(--color-warm-ivory)]/60">
+              <div className="text-[11px] md:text-[14px] text-[var(--color-warm-ivory)]/60">
                 {stat.desc}
               </div>
             </div>

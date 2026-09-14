@@ -104,7 +104,7 @@ export default function Statement() {
       <div className="container-master relative z-10 w-full h-full flex flex-col items-center justify-center text-center">
         
         {/* Static Header */}
-        <p className="text-[14px] md:text-[18px] font-bold tracking-[0.2em] text-[var(--color-muted-sage)] uppercase mb-12">
+        <p className="text-[14px] md:text-[18px] font-bold tracking-[0.2em] text-[var(--color-muted-sage)] uppercase mb-2 md:mb-8">
           Too Much
         </p>
 

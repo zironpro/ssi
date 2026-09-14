@@ -77,11 +77,12 @@ export default function Solutions() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative">
           
           {/* Mobile Image (Visible only on small screens) */}
-          <div className="block lg:hidden w-full h-[40vh] rounded-[24px] overflow-hidden mb-8 relative">
+          <div className="block lg:hidden w-full h-[40vh] rounded-[24px] overflow-hidden mb-8 relative bg-[var(--color-deep-forest)]">
             <img 
               src={solutions[activeIndex].image} 
               alt={solutions[activeIndex].title} 
-              className="w-full h-full object-cover"
+              className="absolute inset-0 w-full"
+              style={{ height: '100%', objectFit: 'cover', display: 'block' }}
             />
             <div className="absolute inset-0 bg-black/20" />
           </div>

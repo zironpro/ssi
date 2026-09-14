@@ -90,26 +90,26 @@ export default function ProjectsGallery() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full h-screen bg-[var(--color-warm-ivory)] overflow-hidden flex flex-col justify-center">
+    <section ref={sectionRef} className="w-full h-auto md:h-screen bg-[var(--color-warm-ivory)] overflow-hidden flex flex-col justify-center py-20 md:py-0 relative">
       
       {/* Title */}
-      <div className="container-master absolute top-12 left-0 right-0 z-20 pointer-events-none hidden md:block">
+      <div className="container-master relative md:absolute md:top-12 left-0 right-0 z-20 pointer-events-none mb-8 md:mb-0">
         <h2 className="text-[40px] md:text-[60px] lg:text-[80px] font-extrabold tracking-tighter text-[var(--color-deep-forest)] leading-none">
           OUR WORK.
         </h2>
       </div>
 
-      {/* Horizontal Scroll Container */}
+      {/* Container: Vertical stack on mobile, Horizontal scroll on desktop */}
       <div 
         ref={scrollContainerRef}
-        className="flex w-full h-[70vh] md:h-[80vh] md:w-[250vw] lg:w-[200vw] overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none hide-scrollbar items-center px-4 md:px-0"
+        className="flex flex-col md:flex-row w-full h-auto md:h-[80vh] md:w-[250vw] lg:w-[200vw] gap-8 md:gap-0 items-center px-4 md:px-0"
       >
         {projects.map((project, i) => (
           <div 
             key={project.title} 
-            className="project-panel relative w-[85vw] md:w-[60vw] lg:w-[50vw] h-full flex-shrink-0 snap-center md:snap-align-none px-2 md:px-6"
+            className="project-panel relative w-full h-[60vh] md:w-[60vw] lg:w-[50vw] md:h-full flex-shrink-0 px-0 md:px-6"
           >
-            <Link href={project.href} className="group relative block w-full h-full overflow-hidden rounded-[32px] bg-[var(--color-deep-forest)] shadow-2xl">
+            <Link href={project.href} className="group relative block w-full h-full overflow-hidden rounded-[24px] md:rounded-[32px] bg-[var(--color-deep-forest)] shadow-2xl">
               
               <div className="absolute inset-0 w-[120%] -left-[10%]">
                 <div 
@@ -120,15 +120,15 @@ export default function ProjectsGallery() {
               
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
 
-              <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 text-[var(--color-warm-ivory)]">
-                <div className="text-[var(--color-arch-sand)] text-[12px] font-bold tracking-widest uppercase mb-3 transition-transform duration-500 group-hover:-translate-y-2">
+              <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 text-[var(--color-warm-ivory)]">
+                <div className="text-[var(--color-arch-sand)] text-[10px] md:text-[12px] font-bold tracking-widest uppercase mb-2 md:mb-3 transition-transform duration-500 group-hover:-translate-y-2">
                   {project.category}
                 </div>
-                <h3 className="text-[32px] md:text-[40px] font-bold tracking-tight mb-6 leading-tight transition-transform duration-500 group-hover:-translate-y-2">
+                <h3 className="text-[28px] md:text-[40px] font-bold tracking-tight mb-4 md:mb-6 leading-tight transition-transform duration-500 group-hover:-translate-y-2">
                   {project.title}
                 </h3>
                 
-                <div className="inline-flex items-center gap-2 font-bold tracking-widest text-[12px] uppercase transition-all opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 duration-500">
+                <div className="inline-flex items-center gap-2 font-bold tracking-widest text-[12px] uppercase transition-all opacity-100 md:opacity-0 md:-translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 duration-500">
                   VIEW PROJECT <ArrowRight className="size-4" />
                 </div>
               </div>
