@@ -98,7 +98,12 @@ export default function Solutions() {
                     zIndex: activeIndex === i ? 10 : 0 
                   }}
                 >
-                  <img src={sol.image} alt={sol.title} className="w-full h-full object-cover" />
+                  <img 
+                    src={sol.image} 
+                    alt={sol.title} 
+                    className="absolute inset-0 w-full"
+                    style={{ height: '100%', objectFit: 'cover', display: 'block' }} 
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
               ))}
