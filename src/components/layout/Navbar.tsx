@@ -63,20 +63,20 @@ export default function Navbar() {
                 alt="SSI Logo"
                 className={`object-contain transition-all duration-700 ${scrolled ? "brightness-0" : "brightness-0 invert"}`}
                 style={{ 
-                  height: "40px", 
+                  height: "70px", 
                   width: "auto" 
                 }}
               />
             </Link>
 
-            <div className="w-[1px] bg-[var(--color-deep-forest)]/20 transition-all duration-700 h-14" />
+            <div className="w-[1px] bg-[var(--color-deep-forest)]/20 transition-all duration-700 h-24" />
 
             <img
               src="/images/solargard.png"
               alt="SolarGard Logo"
               className="object-contain transition-all duration-700"
               style={{ 
-                height: "70px", 
+                height: "100px", 
                 width: "auto" 
               }}
             />
