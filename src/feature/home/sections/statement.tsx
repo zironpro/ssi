@@ -44,7 +44,7 @@ export default function Statement() {
       }, 0.5);
 
       // 2. "HEAT." fades, "GLARE." appears
-      tl.to(".word-heat", { opacity: 0.1, duration: 1 }, 2);
+      tl.to(".word-heat", { opacity: 0, duration: 1 }, 2);
       tl.to(".word-glare", {
         opacity: 1,
         y: 0,
@@ -54,7 +54,7 @@ export default function Statement() {
       }, 2);
 
       // 3. "GLARE." fades, "UV." appears
-      tl.to(".word-glare", { opacity: 0.1, duration: 1 }, 3.5);
+      tl.to(".word-glare", { opacity: 0, duration: 1 }, 3.5);
       tl.to(".word-uv", {
         opacity: 1,
         y: 0,
@@ -64,7 +64,7 @@ export default function Statement() {
       }, 3.5);
 
       // 4. "UV." fades, "LOSS OF PRIVACY." appears
-      tl.to(".word-uv", { opacity: 0.1, duration: 1 }, 5);
+      tl.to(".word-uv", { opacity: 0, duration: 1 }, 5);
       tl.to(".word-privacy", {
         opacity: 1,
         y: 0,
