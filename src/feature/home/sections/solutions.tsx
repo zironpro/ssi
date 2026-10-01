@@ -12,29 +12,40 @@ if (typeof window !== "undefined") {
 
 const solutions = [
   {
-    title: "SOLAR CONTROL",
+    title: "SOLAR & HEAT CONTROL",
+    slug: "solar-and-heat-control",
     desc: "Reduce heat. Control glare. Keep natural light.",
     image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop",
   },
   {
     title: "SAFETY & SECURITY",
+    slug: "safety-and-security",
     desc: "Strengthen glass. Improve protection.",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
   },
   {
     title: "PRIVACY",
+    slug: "privacy",
     desc: "Control visibility. Keep the light.",
     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop",
   },
   {
-    title: "MARINE",
-    desc: "Protection for demanding environments.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
+    title: "DECORATIVE",
+    slug: "decorative",
+    desc: "Elevate interior design with frosted or patterned films.",
+    image: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?q=80&w=2070&auto=format&fit=crop",
   },
   {
-    title: "DECORATIVE",
-    desc: "Elevate interior design with frosted or patterned films.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
+    title: "HEALTH & HYGIENE",
+    slug: "health-and-hygiene",
+    desc: "Antimicrobial surface protection.",
+    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop",
+  },
+  {
+    title: "INTERIOR ENHANCEMENT",
+    slug: "interior-enhancement",
+    desc: "Architectural vinyl wraps for dynamic resurfacing.",
+    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2069&auto=format&fit=crop",
   }
 ];
 
@@ -139,7 +150,7 @@ export default function Solutions() {
                       </p>
                       
                       <Link
-                        href="/solutions"
+                        href={`/solutions/${sol.slug}`}
                         className="inline-flex items-center gap-2 mt-8 text-[14px] font-bold tracking-widest uppercase text-[var(--color-arch-sand)] hover:text-white transition-colors"
                       >
                         Explore Solution <ArrowRight className="size-4" />

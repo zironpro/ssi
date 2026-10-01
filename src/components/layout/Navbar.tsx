@@ -39,10 +39,14 @@ export default function Navbar() {
   }, [mobileMenuOpen]);
 
   const navLinks = [
+    { label: "Home", href: "/" },
+    { label: "Products", href: "/products" },
     { label: "Solutions", href: "/solutions" },
-    { label: "Applications", href: "/applications" },
-    { label: "Projects", href: "/projects" },
-    { label: "About", href: "/about" },
+    { label: "Industries", href: "/industries" },
+    { label: "Services", href: "/services" },
+    { label: "About Us", href: "/about" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
@@ -50,8 +54,8 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out ${
           scrolled 
-            ? "bg-[var(--color-warm-ivory)]/90 backdrop-blur-xl shadow-md py-4" 
-            : "bg-transparent py-6 md:py-10"
+            ? "bg-[var(--color-warm-ivory)]/90 backdrop-blur-xl shadow-md py-2" 
+            : "bg-transparent py-2 md:py-4"
         } ${hidden && !mobileMenuOpen ? "-translate-y-full" : "translate-y-0"}`}
       >
         <div className="container-master mx-auto flex items-center justify-between transition-all duration-700 ease-in-out">
@@ -69,7 +73,7 @@ export default function Navbar() {
               />
             </Link>
 
-            <div className="w-[1px] bg-[var(--color-deep-forest)]/20 transition-all duration-700 h-24" />
+            <div className="w-[1px] bg-[var(--color-deep-forest)]/20 transition-all duration-700 h-[70px]" />
 
             <img
               src="/images/solargard.png"
@@ -83,13 +87,13 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-10">
-            <ul className="flex items-center gap-10">
+          <nav className="hidden xl:flex items-center gap-6">
+            <ul className="flex items-center gap-6">
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-[12px] font-bold tracking-[0.1em] uppercase text-[var(--color-deep-forest)]/80 hover:text-[var(--color-muted-copper)] transition-colors"
+                    className="text-[12px] font-bold tracking-[0.1em] uppercase text-[var(--color-deep-forest)]/80 hover:text-[var(--color-muted-copper)] transition-colors whitespace-nowrap"
                   >
                     {link.label}
                   </Link>
