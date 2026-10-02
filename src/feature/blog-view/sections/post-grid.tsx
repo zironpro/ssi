@@ -110,7 +110,7 @@ export function BlogGrid() {
     <section ref={sectionRef} className="py-24 md:py-32 bg-[var(--color-warm-ivory)]">
       <div className="container-master mx-auto px-4 md:px-0">
         
-        <h2 className="text-sm font-bold tracking-[0.2em] uppercase text-[var(--color-arch-sand)] mb-8">All Posts</h2>
+        <h2 className="text-sm font-bold tracking-[0.2em] uppercase text-[var(--color-muted-sage)] mb-8">All Posts</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
             <Link
@@ -124,7 +124,7 @@ export function BlogGrid() {
                   alt={post.title}
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
-                <div className="absolute top-4 left-4 bg-[var(--color-arch-sand)] text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest z-10">
+                <div className="absolute top-4 left-4 bg-[var(--color-muted-sage)] text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest z-10">
                   {post.category}
                 </div>
               </div>
@@ -133,14 +133,14 @@ export function BlogGrid() {
                 <div className="flex items-center gap-4 text-xs font-medium text-[var(--color-deep-forest)]/50 mb-4">
                   <span className="flex items-center gap-1.5"><Calendar className="size-3" /> {post.date}</span>
                 </div>
-                <h4 className="text-xl font-extrabold text-[var(--color-deep-forest)] leading-tight mb-4 group-hover:text-[var(--color-arch-sand)] transition-colors duration-300">
+                <h4 className="text-xl font-extrabold text-[var(--color-deep-forest)] leading-tight mb-4 group-hover:text-[var(--color-muted-sage)] transition-colors duration-300">
                   {post.title}
                 </h4>
                 <p className="text-[var(--color-deep-forest)]/70 text-sm leading-relaxed mb-8 flex-grow line-clamp-3">
                   {post.excerpt}
                 </p>
                 <div className="inline-flex items-center gap-2 text-[var(--color-deep-forest)] font-bold tracking-[0.1em] uppercase text-xs mt-auto">
-                  Read More <ArrowRight className="size-4 text-[var(--color-arch-sand)] transition-transform group-hover:translate-x-2" />
+                  Read More <ArrowRight className="size-4 text-[var(--color-muted-sage)] transition-transform group-hover:translate-x-2" />
                 </div>
               </div>
             </Link>
